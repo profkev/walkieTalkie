@@ -1,25 +1,26 @@
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
-const redisAdapter = require('socket.io-redis');
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-// Use Redis adapter for scaling
-io.adapter(redisAdapter({ host: 'localhost', port: 6379 }));
-
 app.use(express.static('public'));
 
-io.of('/walkieTalkie').on('connection', (socket) => {
+// Namespace for walkie-talkie
+const walkieTalkie = io.of('/walkieTalkie');
+
+walkieTalkie.on('connection', (socket) => {
   console.log('a user connected to walkieTalkie namespace');
 
+  // Join a room
   socket.on('joinRoom', (room) => {
     socket.join(room);
     console.log(`User joined room: ${room}`);
   });
 
+  // Handle voice data
   socket.on('voice', (data) => {
     const room = data.room;
     socket.to(room).emit('voice', data.audio);
