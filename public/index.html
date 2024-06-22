@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reject finance bill and Everything Walkie Talkie</title>
+  <title>Walkie Talkie - #RejectFinanceBill</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -17,6 +17,12 @@
     }
     h1 {
       color: #333;
+      margin-bottom: 10px;
+    }
+    .tagline {
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 30px;
     }
     #canvas {
       border: 1px solid #ccc;
@@ -34,12 +40,33 @@
       background-color: #4CAF50;
       color: white;
     }
+    .solidarity {
+      margin: 20px;
+      text-align: center;
+    }
+    .solidarity img {
+      width: 100px;
+      height: auto;
+    }
+    .credit {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #777;
+    }
   </style>
 </head>
 <body>
-  <h1>Walkie Talkie App and Everything Walkie Talkie</h1>
+  <h1>Walkie Talkie App</h1>
+  <div class="tagline">#RejectFinanceBill</div>
   <canvas id="canvas"></canvas>
   <button id="record">Hold to Talk</button>
+
+  <div class="solidarity">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Fist.svg/1200px-Fist.svg.png" alt="Solidarity Arm">
+    <div>Solidarity!</div>
+  </div>
+  
+  <div class="credit">Designed by Kev</div>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="main.js"></script>
