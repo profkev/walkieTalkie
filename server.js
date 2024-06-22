@@ -1,22 +1,32 @@
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
+const redisAdapter = require('socket.io-redis');
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
+// Use Redis adapter for scaling
+io.adapter(redisAdapter({ host: 'localhost', port: 6379 }));
+
 app.use(express.static('public'));
 
-io.on('connection', (socket) => {
-  console.log('a user connected');
+io.of('/walkieTalkie').on('connection', (socket) => {
+  console.log('a user connected to walkieTalkie namespace');
 
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
+  socket.on('joinRoom', (room) => {
+    socket.join(room);
+    console.log(`User joined room: ${room}`);
   });
 
   socket.on('voice', (data) => {
-    socket.broadcast.emit('voice', data);
+    const room = data.room;
+    socket.to(room).emit('voice', data.audio);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
   });
 });
 

@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io('/walkieTalkie');
 
 const recordButton = document.getElementById('record');
 const canvas = document.getElementById('canvas');
@@ -10,6 +10,9 @@ let audioContext;
 let analyser;
 let dataArray;
 let bufferLength;
+const room = 'defaultRoom'; // You can make this dynamic based on user input
+
+socket.emit('joinRoom', room);
 
 recordButton.addEventListener('mousedown', startRecording);
 recordButton.addEventListener('mouseup', stopRecording);
@@ -48,7 +51,7 @@ async function startRecording() {
       const reader = new FileReader();
       reader.onloadend = () => {
         const base64String = reader.result.split(',')[1];
-        socket.emit('voice', base64String);
+        socket.emit('voice', { room, audio: base64String });
       };
       reader.readAsDataURL(blob);
       audioChunks = [];
