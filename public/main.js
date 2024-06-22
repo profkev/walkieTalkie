@@ -15,6 +15,16 @@ recordButton.addEventListener('mousedown', startRecording);
 recordButton.addEventListener('mouseup', stopRecording);
 recordButton.addEventListener('mouseleave', stopRecording); // In case the user drags the mouse out
 
+// Add touch event listeners
+recordButton.addEventListener('touchstart', (event) => {
+  event.preventDefault(); // Prevent the default action to avoid triggering other touch behaviors
+  startRecording();
+});
+recordButton.addEventListener('touchend', (event) => {
+  event.preventDefault(); // Prevent the default action to avoid triggering other touch behaviors
+  stopRecording();
+});
+
 async function startRecording() {
   recordButton.style.backgroundColor = '#f44336';
 
