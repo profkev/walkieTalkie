@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Walkie Talkie - #RejectFinanceBill</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -22,7 +23,7 @@
     .tagline {
       font-size: 20px;
       color: #555;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
     #canvas {
       border: 1px solid #ccc;
@@ -44,29 +45,35 @@
       margin: 20px;
       text-align: center;
     }
-    .solidarity img {
-      width: 100px;
-      height: auto;
+    .solidarity .icon {
+      font-size: 50px;
+      color: #333;
     }
     .credit {
       margin-top: 20px;
       font-size: 14px;
       color: #777;
     }
+    .message {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
   <h1>Walkie Talkie App</h1>
   <div class="tagline">#RejectFinanceBill</div>
+  <div class="message">GEN Z Revolution</div>
   <canvas id="canvas"></canvas>
   <button id="record">Hold to Talk</button>
 
   <div class="solidarity">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Fist.svg/1200px-Fist.svg.png" alt="Solidarity Arm">
-    <div>Solidarity!</div>
+    <i class="fas fa-fist-raised icon"></i>
+    <div>Solidarity! Tokea Tuesday</div>
   </div>
   
-  <div class="credit">Designed by Kev</div>
+  <div class="credit">Designed by Kev </div>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="main.js"></script>
